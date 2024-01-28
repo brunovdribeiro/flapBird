@@ -1,11 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LogicManagerScript : MonoBehaviour
 {
-    private int _playerScore = 0;
+    private int _playerScore;
 
     public Text placeHolder;
+
+    public GameObject GameOverScreen;
 
     void Start()
     {
@@ -22,4 +25,16 @@ public class LogicManagerScript : MonoBehaviour
         _playerScore += pointsToAdd;
         drawPlayerScore();
     }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameOverScreen.SetActive(false);
+    }
+
+    public void GameOver()
+    {
+        GameOverScreen.SetActive(true);
+    }
+
 }
