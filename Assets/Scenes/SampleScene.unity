@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   placeHolder: {fileID: 2141724098}
-  GameOverScreen: {fileID: 0}
+  GameOverScreen: {fileID: 1266991288}
 --- !u!4 &435502119
 Transform:
   m_ObjectHideFlags: 0

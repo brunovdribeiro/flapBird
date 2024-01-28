@@ -1,18 +1,30 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Bird : MonoBehaviour
+public class BirdScript : MonoBehaviour
 {
+    private LogicManagerScript _logicManagerScript;
+    private bool IsAlive => !_logicManagerScript.GameOverScreen.activeSelf;
     public Rigidbody2D myRigidBody;
     public float flapStrength = 8;
 
+    private void Start()
+    {
+        _logicManagerScript = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicManagerScript>();
+    }
+
     private void Update()
     {
-        if (InputDetected()) Fly();
+        if (!IsAlive) return;
+        
+        if (InputDetected())
+            Fly();
     }
+
     private void OnBecameInvisible()
     {
-        Debug.Log("O objeto se tornou invisível!");
+        _logicManagerScript.GameOver();
     }
 
     private void Fly()
